@@ -76,7 +76,7 @@ PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), False)
 PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
 
 # URL Shortener
-SHORTENER_API = environ.get("SHORTENER_API", "")
+SHORTENER_API = environ.get("SHORTENER_API", "1d85e33efc4969b36e0f6c0a017aaaefd8accccc")
 LONG_DROPLINK_URL = environ.get("LONG_DROPLINK_URL", False)
 
 #log srt
