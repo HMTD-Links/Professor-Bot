@@ -357,4 +357,8 @@ def humanbytes(size):
         n += 1
     return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
 
+# shortzy
 
+shortz = shortzy.Shortzy(SHORTENER_API, "droplink.co")
+async def get_shortlink(link):
+    if
