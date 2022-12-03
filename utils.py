@@ -1,4 +1,5 @@
 import logging
+import stortzy
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
 from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM
 from imdb import IMDb
@@ -366,3 +367,4 @@ async def get_shortlink(link):
             return await shortz.get_quick_link(link)
         else:
             return await shortz.convert()
+    return link
