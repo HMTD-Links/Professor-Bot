@@ -215,6 +215,11 @@ async def next_page(bot, query):
             ]
             for file in files
         ]
+    btn.insert(0,
+        [
+            InlineKeyboardButton(text="⚡ How to Download ⚡", url='https://t.me/UK_Studios_Official')
+        ]
+    )
 
     if 0 < offset <= 10:
         off_set = 0
