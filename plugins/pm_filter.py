@@ -1,6 +1,6 @@
 import asyncio, re, ast, math, logging
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
-from Script import script
+from Script import script, M_NT_FND
 import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, make_inactive
 from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, SINGLE_BUTTON, PROTECT_CONTENT, \
@@ -274,7 +274,18 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            k = await query.message.edit('This Movie Not Found In DataBase')
+            k = await query.message.edit(
+                text=(M_NT_FND),
+                reply_markup=InlineKeyboardMarkup(
+                                       [[
+                                         InlineKeyboardButton('⭕ Request to Admin ⭕', url="https://t.me/HMTD_Feedback_Bot")
+                                       
+                                       ]]
+                ),
+                parse_mode=enums.ParseMode.HTML
+)
+
+
             await asyncio.sleep(10)
             await k.delete()
 
@@ -1408,6 +1419,12 @@ async def pm_AutoFilter(client, msg, pmspoll=False):
         btn.append(
             [InlineKeyboardButton(text="📄 𝗣𝗮𝗴𝗲 1/1", callback_data="pages")]
         )
+    btn.insert(0, [
+        InlineKeyboardButton('😎 Group', url='https://t.me/HMTD_Discussion_Group'),
+        InlineKeyboardButton('☺️ Share', url='https://t.me/share/url?url=%2A%2A%F0%9F%98%B1+UK+Movies+Zone%C2%B2%C2%B7%E2%81%B0+%F0%9F%98%B1+%0D%0A+%0D%0AWhatever+you+might+ask%2C+you+will+get..+%E2%9D%A4%EF%B8%8F+%0D%0A+%0D%0A%F0%9F%91%87+Join%0D%0A+https%3A%2F%2Ft.me%2FUK_Movies_Zone'),
+        InlineKeyboardButton('📡 Channel', url='https://t.me/UK_Studios_Official')
+        ]
+    )
     imdb = await get_poster(search) if IMDB else None
     TEMPLATE = IMDB_TEMPLATE
     if imdb:
